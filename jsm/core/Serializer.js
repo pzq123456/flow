@@ -1,5 +1,7 @@
 let _id = 0;
-
+/**
+ * 这段代码定义了一个名为`Serializer`的类，该类继承自`EventTarget`。`Serializer`类的主要目的是为了实现对象的序列化和反序列化。
+ */
 export class Serializer extends EventTarget {
 
 	constructor() {
