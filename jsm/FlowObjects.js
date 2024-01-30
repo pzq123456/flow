@@ -13,6 +13,7 @@ export { Search } from './menus/Search.js';
 export { DraggableElement } from './elements/DraggableElement.js';
 export { LabelElement } from './elements/LabelElement.js';
 export { TitleElement } from './elements/TitleElement.js';
+// export { CodeEditorElement } from './elements/CodeEditorElement.js';
 
 export { ButtonInput } from './inputs/ButtonInput.js';
 export { ColorInput } from './inputs/ColorInput.js';
