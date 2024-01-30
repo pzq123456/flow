@@ -786,4 +786,4 @@ export class Element extends Serializer {
 
 }
 
-Element.icons = { unlink: '' };
+Element.icons = { unlink: 'ti ti-unlink' }; // 

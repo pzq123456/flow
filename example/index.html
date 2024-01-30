@@ -14,53 +14,22 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/monaco-editor@latest/min/vs/editor/editor.main.css">
 </head>
 <style>
-/* 
-flow {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 50%;
-	height: 50%;
-} */
 
 </style>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/monaco-editor@latest/min/vs/loader.min.js"></script>
+	<!-- <script type="importmap">
+		{
+			"imports": {
+				"flow": "../jsm/Flow.js"
+			}
+		}
+	</script> -->
 	<flow></flow>
     <h1>jkdslajdl</h1>
     <h1>djkalsjdklsajdklajs</h1>
     <button>djaksldjl</button>
-	<script type="module">
-
-		import * as Flow from '../jsm/Flow.js';
-
-		const node = new Flow.Node(); // 创建一个节点
-		node.setWidth( 500 );
-		node.setPosition( 10, 10 );
-		let editor ;
-		node.add( new Flow.TitleElement( 'code editor' ).setColor( 'purple' ).setOutput( 1 ).setOutputColor( 'fuchsia' ).setInput( 1 ).setInputColor( 'fuchsia' ));
-		node.add( editor = new Flow.CodeEditorElement() );		
-
-		const canvas = new Flow.Canvas();
-		canvas.setSize( window.innerWidth, window.innerHeight );
-		canvas.add( node );
-
-
-		const node2 = new Flow.Node(); // 创建一个节点
-		node2.setWidth( 500 );
-		node2.setPosition( 100, 100 );
-		const button = new Flow.ButtonInput( 'Button' );
-		button.onClick( () => console.log( editor.source ) );
-
-		node2.add( new Flow.TitleElement( '' ).setColor( 'purple' ).setOutput( 1 ).setOutputColor( 'fuchsia' ).setInput( 1 ).setInputColor( 'fuchsia' ).add(button));
-		canvas.add( node2 );
-
-		window.onresize = () => canvas.setSize( window.innerWidth, window.innerHeight ); // 每当浏览器窗口的大小改变时，canvas的大小也会相应地改变。
-
-		const dom = document.querySelector( 'flow' );
-		
-		dom.appendChild( canvas.dom );
-
-	</script>
+	<i class="ti ti-unlink"></i>
+	<script type="module" src="./main.js"></script>
 </body>
 </html>
