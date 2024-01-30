@@ -1,4 +1,6 @@
-import { Element, LoaderLib } from 'flow';
+// import { Element, LoaderLib } from 'flow';
+import { Element } from '../core/Element.js';
+import { LoaderLib } from '../core/Loader.js';
 
 export class CodeEditorElement extends Element {
 
