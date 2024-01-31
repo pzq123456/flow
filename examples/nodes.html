@@ -55,24 +55,10 @@
 
 		const search = new Flow.Search();
 		search.add( new Flow.ButtonInput( 'Node 333' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Abc' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Vector 3' ).setIcon( 'ti ti-box-multiple-3' ) );
-		search.add( new Flow.ButtonInput( 'Node Abc' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node 3' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node Vec' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node 2' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node 4' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node 5' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node 3' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node 33' ).setIcon( 'ti ti-box-multiple-2' ) );
-		search.add( new Flow.ButtonInput( 'Node' ).setIcon( 'ti ti-box-multiple-2' ) );
 		search.forceAutoComplete = true;
 		search.onSubmit( () => {
-		
 			console.log( search.getValue() );
-		
 		} );
-		//search.show();
 
 		const node2 = new Flow.Node();
 		node2.setWidth( 350 );
@@ -82,7 +68,7 @@
 
 		const vector = new Flow.LabelElement( 'N 2' )
 			.setIcon( 'ti ti-palette' )
-		.setOutputColor( 'green' )
+			.setOutputColor( 'green' )
 			.setHeight( 50 )
 			.add( new Flow.NumberInput( 1 ) )
 			.add( new Flow.NumberInput( 2 ) )
@@ -99,15 +85,11 @@
 
 		node2.add( new Flow.Element().add( dropDownInput = new Flow.SelectInput( [ 'Select' ] )
 			.onChange( () => {
-
 				console.log( dropDownInput.getValue() );
-
 			} )
 			.onClick( () => {
-
 				if ( dropDownInputStep ++ == 0 ) dropDownInput.setOptions( [ { name: 'Test A', value: '1' }, { name: 'Test B', value: '2' } ] );
 				else dropDownInput.setOptions( [ { name: 'Test A', value: '1' }, { name: 'Test B', value: '2' }, { name: 'Test C', value: '3' } ] );
-
 			} ) ) );
 
 		node2.add( new Flow.Element().add( new Flow.ColorInput( 0x0066FF ) ) );
@@ -139,9 +121,7 @@
 		node2.add( new Flow.LabelElement( 'TEST' ).setStyle( 'right' ) );
 
 		const nodeS = new Flow.Node();
-		//nodeS.setPosition( 700, 500 );
-		//nodeS.add( new Flow.TitleElement( 'Nodes' ) );
-		//nodeS.add( new Flow.Element().setHeight( 30 ).add( new Flow.StringInput().setPlaceHolder( 'Search...' ).setIcon( 'ti ti-list-search' ) ) );
+
 		const treeView2 = new Flow.TreeViewInput();
 		treeView2.add( new Flow.TreeViewNode( 'File 1' ) );
 		treeView2.add( new Flow.TreeViewNode( 'File 2' )
@@ -175,38 +155,24 @@
 
 		slider.connect( vector );
 
-
 		const canvas = new Flow.Canvas();
 		canvas.setSize( window.innerWidth, window.innerHeight );
 		canvas.add( node );
 		canvas.add( node2 );
 		canvas.add( node1 );
-		//canvas.add( nodeS );
+		// canvas.add( nodeS );
 
 		window.onresize = () => canvas.setSize( window.innerWidth, window.innerHeight );
 
 		// context-menu
-
 		const context = new Flow.ContextMenu( document.body );
 		context.setWidth( 300 );
-		//context.add( new Flow.ButtonInput( 'Vector 4' ).setIcon( 'ti ti-box-multiple-2' ) );
-		context.add( nodeS );
-		/*
 		context.add( new Flow.ButtonInput( 'Float' ).setToolTip( 'Min / Max' ).setIcon( 'ti ti-box-multiple-1' ).onClick( () => {
-
-			const canvasRect = canvas.rect;
-
 			const node3 = new Flow.Node();
 			node3.setWidth( 350 );
-			//node3.setPosition( canvas.relativeClientX - ( 350 / 2 ), canvas.relativeClientY - 20 );
-			node3.setPosition(
-				( canvas.relativeX + ( canvasRect.width / 2 ) ) - ( 350 / 2 ),
-				( canvas.relativeY + ( canvasRect.height / 2 ) ) - 20
-			);
+			node3.setPosition( canvas.relativeClientX - ( 350 / 2 ), canvas.relativeClientY - 20 );
 			node3.add( new Flow.TitleElement( 'Dynamic' ).setStyle( 'green' ).setOutput( 1 ).setInput( 1 ).addButton( new Flow.ButtonInput( '✖' ).onClick( () => {
-
 				canvas.remove( node3 );
-
 			} ) ) );
 			node3.add( new Flow.LabelElement( 'Numbers' ).add( new Flow.SliderInput( .5, 0, 1 ) ).setOutput( 1 ).setInput( 1 ) );
 			node3.add(
@@ -214,16 +180,11 @@
 					.add( new Flow.ButtonInput( 'Remove' ) )
 					.add( new Flow.ButtonInput( 'Add' ) )
 			);
-
 			canvas.add( node3 );
-
 			canvas.select( node3 );
-
 			context.hide();
-
-
 		} ) );
-		*/
+		
 
 		const context3 = new Flow.ContextMenu();
 		context3.add( new Flow.ButtonInput( '1' ) );
@@ -235,60 +196,28 @@
 		context2.add( new Flow.ButtonInput( 'B' ) );
 		context2.add( new Flow.ButtonInput( 'C' ), context3 );
 
-		//context.add( new Flow.ButtonInput( 'Vector 2' ).setIcon( 'ti ti-box-multiple-2' ) );
-		//context.add( new Flow.ButtonInput( 'Vector 3' ).setIcon( 'ti ti-box-multiple-3' ), context2 );
-		/*
-		
+		context.add( new Flow.ButtonInput( 'Vector 2' ).setIcon( 'ti ti-box-multiple-2' ) );
+		context.add( new Flow.ButtonInput( 'Vector 3' ).setIcon( 'ti ti-box-multiple-3' ), context2 );
+
 		context.add( new Flow.ButtonInput( 'Color' ).setIcon( 'ti ti-palette' ) );
 		context.add( new Flow.ButtonInput( 'Map' ).setIcon( 'ti ti-photo' ) );
 		context.add( new Flow.ButtonInput( 'Cube Map' ).setIcon( 'ti ti-box' ) );
 		context.add( new Flow.ButtonInput( 'Slider' ).setIcon( 'ti ti-adjustments-horizontal' ) );
 		context.add( new Flow.ButtonInput( 'Integer' ).setIcon( 'ti ti-list-numbers' ) );
-*/
-		const menu = new Flow.CircleMenu();
-		menu.setAlign( 'top left' );
-		const circleButton = new Flow.ButtonInput( /*'☰'*/ )
-			.setIcon( 'ti ti-apps' )
-			.setToolTip( 'Add' )
-			/*.setIcon( 'ti ti-menu-2' )*/
-			.onClick( () => {
-
-				context.open();
-
-			} );
-		menu.add( circleButton );
-
-		menu.add( new Flow.ButtonInput().setIcon( 'ti ti-download' ).setToolTip( 'Save' ) );
-		menu.add( new Flow.ButtonInput().setIcon( 'ti ti-upload' ).setToolTip( 'Open' ) );
 
 		const dom = document.querySelector( 'flow' );
 
+
+
 		dom.appendChild( search.dom );
-		dom.appendChild( context.dom );
-		dom.appendChild( menu.dom );
-
-		const json = canvas.toJSON();
-		console.log( JSON.stringify( json ) );
-
-		const tip = new Flow.Tips();
-		//tip.duration = 500000;
-		tip.tip( 'Needed a Material. (1)', 'error' );
-		tip.tip( 'Message box!!! (2)' );
-		tip.tip( 'Message box!!! (3)' );
-		tip.tip( 'Message box!!! (4)' );
-		setTimeout( () => tip.tip( 'Message box!!! (5)' ), 1000 );
-		setTimeout( () => tip.tip( 'Message box!!! (6)' ), 2000 );
-		setTimeout( () => tip.tip( 'Message box!!! (7)' ), 3000 );
-		setTimeout( () => tip.tip( 'Message box!!! (8)' ), 4000 );
-		dom.appendChild( tip.dom );
-
-		Flow.Element.icons.unlink = 'ti ti-unlink';
-
-		//const jsonCanvas = Flow.Loader.parse( json );
-
-		//dom.appendChild( jsonCanvas.dom );
 		dom.appendChild( canvas.dom );
 
+
+		// 指定页面右键菜单
+		document.body.oncontextmenu = ( event ) => {
+			event.preventDefault();
+			context.open( event.clientX, event.clientY );
+		};
 	</script>
 </body>
 </html>

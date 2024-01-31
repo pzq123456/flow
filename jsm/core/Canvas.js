@@ -53,7 +53,7 @@ export class Canvas extends Serializer {
 
 		this.nodes = [];
 
-		this.selected = null;
+		this.selected = null; // 当前选中的节点
 
 		this.updating = false;
 
@@ -577,6 +577,10 @@ export class Canvas extends Serializer {
 
 	}
 
+	/**
+	 * 清除 f-content 下的所有节点（相当于清空画布）
+	 * @returns {Canvas} - 返回当前的canvas对象
+	 */
 	clear() {
 
 		const nodes = this.nodes;
@@ -651,6 +655,11 @@ export class Canvas extends Serializer {
 
 	}
 
+	/**
+	 * 这个select方法的作用是选中或取消选中一个节点。如果传入的节点和当前选中的节点不同，那么它会取消当前选中的节点的选中状态，并选中传入的节点。如果传入的节点和当前选中的节点相同，或者没有传入节点（即node为null），那么它只会取消当前选中的节点的选中状态。
+	 * - this.selected - 当前选中的节点
+	 * @param {*} node - 一个节点
+	 */
 	select( node = null ) {
 
 		if ( node === this.selected ) return;

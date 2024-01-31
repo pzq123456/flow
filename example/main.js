@@ -17,7 +17,10 @@ const node2 = new Flow.Node(); // 创建一个节点
 node2.setWidth( 500 );
 node2.setPosition( 100, 100 );
 const button = new Flow.ButtonInput( 'Button' );
-// button.onClick( () => canvas.dom.remove() );
+button.onClick( () => {
+    // console.log(canvas.clear());
+    console.log(canvas.getLinks());
+} );
 
 node2.add( new Flow.TitleElement( '' ).setColor( 'purple' ).setOutput( 1 ).setOutputColor( 'fuchsia' ).setInput( 1 ).setInputColor( 'fuchsia' ).add(button));
 canvas.add( node2 );

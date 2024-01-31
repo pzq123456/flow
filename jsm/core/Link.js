@@ -1,5 +1,10 @@
 export class Link {
-
+	/**
+	 * 这里的 io 的概念是相对于 Element 本身而言的
+	 * - outputElement ----> [link] ----> inputElement
+	 * @param {*} inputElement - 被输入的元素
+	 * @param {*} outputElement - 输出元素
+	 */
 	constructor( inputElement = null, outputElement = null ) {
 
 		this.inputElement = inputElement;

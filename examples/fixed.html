@@ -111,36 +111,36 @@ function main() {
 				theme: 'vs-dark',
 			});
 
-			var decorations = editor.createDecorationsCollection([
-	{
-		range: new monaco.Range(4, 1, 5, 1),
-		options: {
-			isWholeLine: true,
-			className: "myContentClass",
-			linesDecorationsClassName: "myGlyphMarginClass",
-			afterContentClassName: "myGlyphMarginClass",
-			beforeContentClassName: "myGlyphMarginClass",
-			blockClassName: "myGlyphMarginClass",
-			hoverMessage: { value: "TEST" }
-		},
-	},
-]);
+		// var decorations = editor.createDecorationsCollection([
+		// 	{
+		// 		range: new monaco.Range(4, 1, 5, 1),
+		// 		options: {
+		// 			isWholeLine: true,
+		// 			className: "myContentClass",
+		// 			linesDecorationsClassName: "myGlyphMarginClass",
+		// 			afterContentClassName: "myGlyphMarginClass",
+		// 			beforeContentClassName: "myGlyphMarginClass",
+		// 			blockClassName: "myGlyphMarginClass",
+		// 			hoverMessage: { value: "TEST" }
+		// 		},
+		// 	},
+		// ]);
 
-/*
-			var decorations = editor.createDecorationsCollection([
-				{
-					range: new monaco.Range(0, 1, 5, 1),
-					options: {
-						isWholeLine: true,
-						linesDecorationsClassName: "myLineDecoration",
-					},
-				},
-				{
-					range: new monaco.Range(1, 1, 8, 24),
-					options: { inlineClassName: "myInlineDecoration" },
-				},
-			]);
-*/
+
+			// var decorations = editor.createDecorationsCollection([
+			// 	{
+			// 		range: new monaco.Range(0, 1, 5, 1),
+			// 		options: {
+			// 			isWholeLine: true,
+			// 			linesDecorationsClassName: "myLineDecoration",
+			// 		},
+			// 	},
+			// 	{
+			// 		range: new monaco.Range(1, 1, 8, 24),
+			// 		options: { inlineClassName: "myInlineDecoration" },
+			// 	},
+			// ]);
+
 			//console.log( decorations.clear() );
 
 
