@@ -8,9 +8,7 @@ export class BaseNodeEditor extends Node {
 		super();
 
 		const getObjectCallback = ( /*output = null*/ ) => {
-
 			return this.value;
-
 		};
 
 		this.setWidth( width );
@@ -23,9 +21,7 @@ export class BaseNodeEditor extends Node {
 			.setOutput( this.outputLength );
 
 		const contextButton = new ButtonInput().onClick( () => {
-
 			context.open();
-
 		} ).setIcon( 'ti ti-dots' );
 
 		const onAddButtons = () => {
@@ -33,27 +29,19 @@ export class BaseNodeEditor extends Node {
 			context.removeEventListener( 'show', onAddButtons );
 
 			context.add( new ButtonInput( 'Remove' ).setIcon( 'ti ti-trash' ).onClick( () => {
-
 				this.dispose();
-
 			} ) );
 
 			if ( this.hasJSON() ) {
-
 				this.context.add( new ButtonInput( 'Export' ).setIcon( 'ti ti-download' ).onClick( () => {
-
 					exportJSON( this.exportJSON(), this.constructor.name );
-
 				} ) );
 
 			}
 
 			context.add( new ButtonInput( 'Isolate' ).setIcon( 'ti ti-3d-cube-sphere' ).onClick( () => {
-
 				this.context.hide();
-
 				this.title.dom.dispatchEvent( new MouseEvent( 'dblclick' ) );
-
 			} ) );
 
 		};
@@ -196,7 +184,6 @@ export class BaseNodeEditor extends Node {
 }
 
 export function exportJSON( object, name ) {
-
 	const json = JSON.stringify( object );
 
 	const a = document.createElement( 'a' );
@@ -205,5 +192,4 @@ export function exportJSON( object, name ) {
 	a.href = URL.createObjectURL( file );
 	a.download = name + '.json';
 	a.click();
-
 }

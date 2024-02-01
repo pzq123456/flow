@@ -2,7 +2,7 @@ import { Serializer } from './Serializer.js';
 import { Node } from './Node.js';
 import { TitleElement } from '../elements/TitleElement.js';
 import { draggableDOM, dispatchEventList, numberToPX } from './Utils.js';
-import { drawLine } from './CanvasUtils.js';
+import { drawLine, drawBgGrids } from './CanvasUtils.js';
 
 const colors = [
 	'#ff4444',
@@ -26,10 +26,12 @@ export class Canvas extends Serializer {
 		const canvas = document.createElement( 'canvas' );
 		const frontCanvas = document.createElement( 'canvas' );
 		const mapCanvas = document.createElement( 'canvas' );
+		const backgroundCanvas = document.createElement( 'canvas' ); // 用于绘制背景网格线
 
 		const context = canvas.getContext( '2d' );
 		const frontContext = frontCanvas.getContext( '2d' );
 		const mapContext = mapCanvas.getContext( '2d' );
+		const backgroundContext = backgroundCanvas.getContext( '2d' ); // 用于绘制背景网格线
 
 		this.dom = dom;
 
@@ -40,10 +42,12 @@ export class Canvas extends Serializer {
 		this.canvas = canvas;
 		this.frontCanvas = frontCanvas;
 		this.mapCanvas = mapCanvas;
+		this.backgroundCanvas = backgroundCanvas; // 用于绘制背景网格线
 
 		this.context = context;
 		this.frontContext = frontContext;
 		this.mapContext = mapContext;
+		this.backgroundContext = backgroundContext; // 用于绘制背景网格线
 
 		this.clientX = 0;
 		this.clientY = 0;
@@ -65,7 +69,7 @@ export class Canvas extends Serializer {
 
 		this._scrollLeft = 0;
 		this._scrollTop = 0;
-		this._zoom = 1;
+		this._zoom = 1;  // 缩放比例
 		this._width = 0;
 		this._height = 0;
 		this._focusSelected = false;
@@ -73,10 +77,12 @@ export class Canvas extends Serializer {
 			scale: 1,
 			screen: {}
 		};
+		this._haveBackground = false;
 
 		canvas.className = 'background';
 		frontCanvas.className = 'frontground';
 		mapCanvas.className = 'map';
+		backgroundCanvas.className = 'background'; // 用于绘制背景网格线
 
 		dropDOM.innerHTML = '<span>drop your file</span>';
 
@@ -86,6 +92,7 @@ export class Canvas extends Serializer {
 		dom.append( contentDOM );
 		dom.append( areaDOM );
 		dom.append( mapCanvas );
+		dom.append( backgroundCanvas ); // 用于绘制背景网格线
 
 		const zoomTo = ( zoom, clientX = this.clientX, clientY = this.clientY ) => {
 
@@ -962,6 +969,22 @@ export class Canvas extends Serializer {
 
 	}
 
+	updateBackground() {
+		// 根据缩放比例，动态调整网格线的间距
+		const { zoom, backgroundCanvas, backgroundContext } = this;
+		const size = 32 * zoom;
+		backgroundCanvas.width = this.canvas.width;
+		backgroundCanvas.height = this.canvas.height;
+		backgroundContext.clearRect( 0, 0, backgroundCanvas.width, backgroundCanvas.height );
+
+		// 根据 zoom 的值来决定是否绘制背景网格线
+		if (zoom < 0.5) {
+			drawBgGrids( backgroundContext, backgroundCanvas.width, backgroundCanvas.height, size, false, true,"rgb(125,125,125)"); // 绘制小网格线
+		} else {
+			drawBgGrids( backgroundContext, backgroundCanvas.width, backgroundCanvas.height, size, true); // 只绘制大网格线
+		}
+	}
+
 	update() {
 
 		if ( this.updating === false ) return;
@@ -971,6 +994,22 @@ export class Canvas extends Serializer {
 		this.updateLines();
 		this.updateMap();
 
+		if(this._haveBackground){
+			this.updateBackground();
+		}
+
+	}
+
+	// 使用函数控制是否绘制背景网格线
+	/**
+	 * @param {boolean} value
+	 */
+	set haveBackground( value ) {
+		this._haveBackground = value;
+	}
+
+	get haveBackground() {
+		return this._haveBackground;
 	}
 
 	serialize( data ) {

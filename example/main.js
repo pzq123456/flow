@@ -12,6 +12,8 @@ const canvas = new Flow.Canvas();
 canvas.setSize( window.innerWidth, window.innerHeight );
 canvas.add( node );
 
+canvas._haveBackground = true;
+
 
 const node2 = new Flow.Node(); // 创建一个节点
 node2.setWidth( 500 );
@@ -26,7 +28,6 @@ node2.add( new Flow.TitleElement( '' ).setColor( 'purple' ).setOutput( 1 ).setOu
 canvas.add( node2 );
 
  // 移除canvas的dom元素
-
 window.onresize = () => canvas.setSize( window.innerWidth, window.innerHeight ); // 每当浏览器窗口的大小改变时，canvas的大小也会相应地改变。
 
 const dom = document.querySelector( 'flow' );
